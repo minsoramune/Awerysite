@@ -1,4 +1,5 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/badge/main)](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/overview/main)
+
 **Please Do Not Steal/Share Source Code**
 
 This is a static page hosted on https://dantotsu.netlify.app/. 
