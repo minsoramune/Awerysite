@@ -1,6 +1,6 @@
 **Please Do Not Steal/Share Source Code**
 
-This is a static page hosted on https://dantotsu.app/. 
+This is a static page hosted on https://dantotsu.netlify.app/. 
 
 For more information, please visit our GitHub repository at https://github.com/rebelonion/Dantotsu.
 
@@ -11,6 +11,8 @@ For more information, please visit our GitHub repository at https://github.com/r
 - [Wai What](https://github.com/WaiWhat) (Creator of Dantotsu's Branding)
 
 - **[Neko404](https://github.com/MarshMeadow?tab=repositories) (Main Web Dev)**
+
+- **[itsmechinmoy](https://github.com/itsmechinmoy?tab=repositories) (Current Dev)**
 
 - [Arif Alam](https://github.com/ARIF683?tab=repositories) (Contributor of Dantotsu Website / Discord Moderator.)
 
