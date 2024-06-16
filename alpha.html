@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="/alpha" />
+    <meta name="description" content="Get the latest alpha update of Dantotsu!">
+    <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
+    <meta name="theme-color" content="#4d006b" />
+    <title>Latest Dantotsu Alpha Release</title>
+    <style>
+        body {
+            background-color: black; /* Set background color to black */
+            color: white; /* Set text color to white */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding to the content */
+            font-family: 'Arial', sans-serif; /* Set font family */
+        }
+
+        h1 {
+            color: yellow; /* Set heading color to yellow */
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+        // Function to fetch the latest release APK from GitHub API
+        async function fetchLatestAPK() {
+            const repo = 'kaorlol/dantotsu-updater'; // GitHub repository owner and name
+            const apiUrl = `https://api.github.com/repos/${repo}/releases/latest`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Find the APK asset
+                    const apkAsset = data.assets.find(asset => asset.name.endsWith('.apk'));
+                    if (apkAsset) {
+                        // Trigger the APK download
+                        const downloadLink = document.createElement('a');
+                        downloadLink.href = apkAsset.browser_download_url;
+                        downloadLink.download = apkAsset.name;
+                        downloadLink.click();
+                    } else {
+                        console.error('No APK asset found in the latest release.');
+                    }
+                } else {
+                    console.error('Failed to fetch release information:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching release information:', error);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            fetchLatestAPK();
+        };
+    </script>
+</body>
+</html>
