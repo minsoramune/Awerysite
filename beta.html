@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="/beta" />
+    <meta name="description" content="Get the latest beta update of Dantotsu!">
+    <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
+    <meta name="theme-color" content="#4d006b" />
+    <title>Latest Dantotsu Beta Release</title>
+    <style>
+        body {
+            background-color: black; /* Set background color to black */
+            color: white; /* Set text color to white */
+            margin: 0; /* Remove default margin */
+            padding: 20px; /* Add padding to the content */
+            font-family: 'Arial', sans-serif; /* Set font family */
+        }
+
+        h1 {
+            color: yellow; /* Set heading color to yellow */
+        }
+    </style>
+</head>
+<body>
+</body>
+</html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script>
+        // Function to fetch release information for Beta App from GitHub API
+        async function fetchBetaReleaseInfo() {
+            const repo = 'rebelonion/Dantotsu'; // GitHub repository owner and name
+            const apiUrl = `https://api.github.com/repos/${repo}/releases`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Filter out releases with "beta" in their name
+                    const betaRelease = data.find(release => release.name.toLowerCase().includes('beta'));
+                    if (betaRelease) {
+                        // Find the APK asset
+                        const apkAsset = betaRelease.assets.find(asset => asset.name.endsWith('.apk'));
+                        if (apkAsset) {
+                            // Trigger the APK download
+                            const downloadLink = document.createElement('a');
+                            downloadLink.href = apkAsset.browser_download_url;
+                            downloadLink.download = apkAsset.name;
+                            downloadLink.click();
+                        } else {
+                            console.error('No APK asset found in the beta release.');
+                            alert('No APK asset found in the beta release.');
+                        }
+                    } else {
+                        console.error('No beta release found.');
+                        alert('No beta release found.');
+                    }
+                } else {
+                    console.error('Failed to fetch release information from GitHub.');
+                    alert('Failed to fetch release information from GitHub.');
+                }
+            } catch (error) {
+                console.error('Error fetching beta release information:', error);
+                alert('Error fetching beta release information from GitHub.');
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            fetchBetaReleaseInfo();
+        };
+    </script>
+</body>
+</html>
