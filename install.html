@@ -11,10 +11,6 @@
     <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
     <meta name="theme-color" content="#4d006b" />
     <meta name="twitter:card" content="summary_large_image">
-    <!-- Soon  -->
-    <meta name="twitter:site" content="@yourtwitterhandle">
-    <!-- Soon -->
-    <link rel="canonical" href="https://www.dantotsu.app/">
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
@@ -346,6 +342,7 @@
                     const lastUpdateTimestamp = new Date(data.published_at).toISOString(); // Convert to ISO string
                     document.getElementById('universalLastUpdate').innerHTML = `Last update: 
 																																			
+																																	
 																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
                   } else {
                     console.error('Failed to fetch release information:', data.message);
@@ -385,6 +382,7 @@
                       const lastUpdateTimestamp = new Date(betaRelease.published_at).toISOString(); // Use betaRelease's timestamp
                       document.getElementById('betaLastUpdate').innerHTML = `Last update: 
 																																			
+																																	
 																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
                     } else {
                       console.error('No beta release found.');
@@ -427,6 +425,7 @@
                     const lastUpdateTimestamp = new Date(data.published_at).toISOString(); // Convert to ISO string
                     document.getElementById('alphaLastUpdate').innerHTML = `Last update: 
 																																			
+																																	
 																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
                   } else {
                     console.error('Failed to fetch release information:', data.message);
@@ -611,8 +610,53 @@
               }
             </script>
             <br>
-            <!-- Extension button-->
-            <a href="/extension" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Extensions</a>
+            <!-- Extension button -->
+            <a href="#" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors" onclick="toggleExtensionPopup()">Extensions</a>
+            <!-- Extension selection popup -->
+            <div id="extensionPopup" style="display: none; width: 230px; padding-bottom: 20px; top: calc(73% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeExtensionPopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <!-- Buttons for anime and manga -->
+              <button class="bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full font-bold transition-colors mr-2" onclick="selectCategory('anime')">Anime</button>
+              <button class="bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full font-bold transition-colors" onclick="selectCategory('manga')">Manga</button>
+            </div>
+            <script>
+              // Function to toggle the extension selection popup
+              function toggleExtensionPopup() {
+                togglePopup('extensionPopup');
+              }
+              // Function to toggle any popup by ID
+              function togglePopup(popupId) {
+                const popup = document.getElementById(popupId);
+                if (popup.style.display === 'none') {
+                  closeCurrentPopup(); // Close current popup if any
+                  popup.style.display = 'block'; // Open new popup
+                  currentPopup = popup;
+                } else {
+                  popup.style.display = 'none'; // Close popup if already open
+                  currentPopup = null;
+                }
+              }
+              // Function to close the current popup
+              function closeExtensionPopup() {
+                if (currentPopup) {
+                  currentPopup.style.display = 'none';
+                  currentPopup = null;
+                }
+              }
+              // Function to handle category selection
+              function selectCategory(category) {
+                if (category === 'anime') {
+                  window.location.href = "/anime-extensions";
+                } else if (category === 'manga') {
+                  window.location.href = "/manga-extensions";
+                }
+              }
+            </script>
             <!-- View versions -->
             <a href="https://github.com/rebelonion/Dantotsu/releases" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Versions</a>
           </div>
@@ -636,6 +680,7 @@
                 const totalDownloadCount = calculateTotalDownloadCount(stableData) + calculateTotalDownloadCount(alphaData);
                 // Update the button text with the total download count and the Android icon
                 document.getElementById('totalDownloadCountButton').innerHTML = `
+																																			
 																																			<img src="images/androidicon.png" alt="Android Icon" style="width: 20px; height: 20px; margin-right: 5px;"> Downloads: ${totalDownloadCount}`;
               } catch (error) {
                 console.error('Error fetching total download count:', error);
