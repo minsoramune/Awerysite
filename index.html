@@ -1,88 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore our open-source mobile app tailored for Anilist enthusiasts. Inspired by Saikou, our app is powered by Tachi/Aniyomi extensions for an enhanced experience. Download our app now to immerse yourself in a world of Anime and Manga like never before!">
+    <meta name="keywords" content="Anilist Client, OpenSource, Tachiyomi, Aniyomi, Anime app, Anilist Sync">
+    <meta property="og:title" content="Install Dantotsu On Your Device">
+    <meta property="og:description" content="Open source mobile Anilist client based off Saikou with Tachi/Aniyomi extensions">
+    <meta property="og:url" content="/install">
+    <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
+    <meta name="theme-color" content="#4d006b" />
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Soon  -->
+    <meta name="twitter:site" content="@yourtwitterhandle">
+    <!-- Soon -->
+    <link rel="canonical" href="https://www.dantotsu.app/">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
+    <link href="./style.css" ref="stylesheet">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#4d006b">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/0a1007e48a.js" crossorigin="anonymous"></script>
     <title>Dantotsu</title>
-    <style>
-      /* Dark mode styles */
-      body {
-        background-color: #121212;
-        /* Dark background color */
-        color: #fff;
-        /* White text color */
-      }
-
-      .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #333;
-        /* Darker background color */
-        padding: 20px;
-        border: 2px solid #ccc;
-        border-radius: 10px;
-        z-index: 1000;
-      }
-
-      .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,
-            0,
-            0,
-            0.7);
-        /* Darker semi-transparent black */
-        z-index: 999;
-      }
-
-      /* Square ring around the close button with rounded corners */
-      .close-button {
-        border: 2px solid #fff;
-        /* White border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 5px 10px;
-        /* Padding around the button */
-        background-color: transparent;
-        /* Transparent background */
-        color: #fff;
-        /* White text color */
-        cursor: pointer;
-        /* Cursor style */
-      }
-
-      .close-button:hover {
-        background-color: #fff;
-        /* White background color on hover */
-        color: #121212;
-        /* Dark text color on hover */
-      }
-    </style>
-    <script>
-      // Function to show the pop-up window and overlay
-      function showPopup() {
-        // Check if the flag 'popupShown' is not set in localStorage
-        if (!localStorage.getItem("popupShown")) {
-          // Show the pop-up window and overlay
-          document.getElementById("popup").style.display = "block";
-          document.getElementById("overlay").style.display = "block";
-          // Set the flag 'popupShown' in localStorage to indicate that the popup has been shown
-          localStorage.setItem("popupShown", "true");
-        }
-      }
-      // Function to close the pop-up window and overlay
-      function closePopup() {
-        document.getElementById("popup").style.display = "none";
-        document.getElementById("overlay").style.display = "none";
-      }
-    </script>
     <style>
       /* CSS Animation for shaking */
       @keyframes shake {
@@ -111,48 +53,34 @@
         animation: shake 0.5s infinite;
       }
     </style>
-  </head>
-  <body onload="showPopup()">
-    <!-- Call the function when the page loads -->
-    <!-- Pop-up window -->
-    <div id="popup" class="popup">
-      <h2>Human Verification</h2>
-      <p>Please verify that you are not a bot.</p>
-      <!-- Add your verification form or any other content here -->
-      <button class="close-button" onclick="closePopup()"> Click Here To Verify </button>
-      <!-- Close button with square ring -->
-    </div>
-    <!-- Overlay -->
-    <div id="overlay" class="overlay"></div>
-  </body>
-</html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Discover our open-source mobile app designed for Anilist enthusiasts. Drawing inspiration from Saikou, our app is enriched with Tachi/Aniyomi extensions for an enhanced experience. Join us and dive into the world of Anime and Manga like never before!" />
-    <meta name="author" content="Rebel-Onion" />
-    <meta name="keywords" content="Anilist Client, OpenSource, Tachiyomi, Aniyomi, Anime app, Anilist Sync" />
-    <meta property="og:title" content="Dantotsu" />
-    <meta property="og:description" content="Open source mobile Anilist client based off Saikou with Tachi/Aniyomi extensions" />
-    <meta name="keywords" content="dantotsu, saikou, anime, anime app, anime streaming app, anime extensions, aniyomi, tachiyomi, aniyomi extensions, tachiyomi extensions, manga reading app, manga extensions, anilist client, anilist, mal, myanimelist, best anime site, good anime site, best anime app, good anime app" />
-    <meta property="og:image" content="https://imgur.com/RwaqUkI.gif" />
-    <meta property="og:url" content="/index" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <!-- Soon  -->
-    <meta name="twitter:site" content="@yourtwitterhandle" />
-    <!-- Soon -->
-    <link rel="canonical" href="https://www.dantotsu.vercel.app" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png" />
-    <link href="/style.css" ref="stylesheet" />
-    <link rel="manifest" href="favicons/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#4d006b" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/0a1007e48a.js" crossorigin="anonymous"></script>
-    <title>Dantotsu</title>
+    <style>
+      /* CSS Animation for shaking */
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+
+        25% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        50% {
+          transform: translateX(5px) rotate(1deg);
+        }
+
+        75% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .shake:hover {
+        animation: shake 0.5s infinite;
+      }
+    </style>
   </head>
   <style>
     html,
@@ -188,7 +116,6 @@
               }
             }
           </script>
-          <small class="text-xs ml-2"></small>
         </div>
         <div class="flex items-center">
           <!-- <div class="relative group"><button id="languageDropdown" class="mr-4 transition-colors hover:text-purple-500"><i class="fa-solid fa-globe"></i></button><ul id="languageOptions" class="absolute hidden bg-white text-black p-2 space-y-1 rounded-lg shadow-md right-0 mt-3"><button class="language-button" data-lang="en">English</button><button class="language-button" data-lang="hi">Hindi</button><button class="language-button" data-lang="es">Spanish</button></ul></div> -->
@@ -208,129 +135,577 @@
       </div>
     </nav>
     <!-- HERO -->
-    <section id="hero" class="text-white py-20 h-screen shadow-lg relative" style="
-        background-image: url('images/ei_1698849603612-removebg-preview-1.png');
-        background-size: cover;
-        background-position: center;
-      ">
+    <section id="hero" class="text-white py-20 h-screen shadow-lg relative" style="background-image: url('images/ei_1698849603612-removebg-preview-1.png'); background-size: cover; background-position: center;">
       <div class="container h-full mx-auto flex flex-col justify-center items-center relative z-10">
         <div class="text-center">
-          <h1 class="text-5xl font-bold" data-lang="en">Dantotsu</h1>
-          <h1 class="text-5xl font-bold" data-lang="hi" style="display: none"> दंतोत्सु </h1>
-          <h1 class="text-5xl font-bold" data-lang="es" style="display: none"> Dantotsu en Español </h1>
-          <h2 class="text-2xl font-bold" data-lang="en"> Read & Watch Anywhere </h2>
-          <h2 class="text-2xl font-bold" data-lang="hi" style="display: none"> कहीं भी पढ़ें और देखें </h2>
-          <h2 class="text-2xl font-bold" data-lang="es" style="display: none"> Leer y Ver en Cualquier Lugar </h2>
-          <p class="text-sm" data-lang="en"> An open-source mobile application for Anilist enthusiasts, inspired by Saikou and enhanced with Tachi/Aniyomi extensions. </p>
-          <p class="text-sm" data-lang="hi" style="display: none"> दंतोत्सु, एक Anilist प्रेमियों के लिए एक ओपन सोर्स मोबाइल एप्लिकेशन है, जिसे सायकू से प्रेरित किया गया है और टाची/आनियोमी एक्सटेंशन्स के साथ बढ़ाया गया है। </p>
-          <p class="text-sm" data-lang="es" style="display: none"> Una aplicación móvil de código abierto para entusiastas de Anilist, inspirada en Saikou y mejorada con extensiones de Tachi/Aniyomi. </p>
-          <div class="flex flex-col justify-center items-center mt-8 space-y-4">
-            <!-- download button -->
-            <a href="/install" class="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 rounded-full py-3 px-10 font-bold">Install</a>
+          <h1 class="text-5xl font-bold" data-lang="en">Installation</h1> &nbsp; <p class="text-sm" data-lang="en">Join for support! <a href="https://discord.com/invite/4HPZ5nAWwM">
+              <b>Discord <b>
+            </a> or <a href="https://t.me/+gzBCQExtLQo1YTNh"> Telegram</a>
+          <div class="block md:flex justify-center items-center mt-8 space-x-4 w-auto">
+            <!-- Download button for Universal app -->
+            <div class="mb-4">
+              <button id="downloadButton1" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-7 rounded-full transition-colors" onclick="toggleUniversalArchitecturePopup()">DOWNLOAD STABLE RELEASE</button>
+            </div>
+            <!-- Universal Architecture selection popup -->
+            <div id="universalArchitecturePopup" style="display: none; width: 315px; padding-bottom: 20px; top: calc(40% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeUniversalArchitecturePopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <br>
+              <!-- Release Notes -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">What's New On Stable Release?</h2>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <p id="universalReleaseNotes" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- View Full Changelogs button -->
+              <button class="text-blue-500 hover:underline text-sm mb-2" onclick="viewFullChangelogs('universal')" style="font-family: Arial, sans-serif; font-size: 10px;">View All Changelogs</button>
+              <!-- Last updated timestamp for Beta -->
+              <p id="universalLastUpdate" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <!-- Title -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">Download</h2>
+              <!-- Architecture options -->
+              <ul class="space-y-2" id="universalArchitectureList">
+                <!-- Architecture options will be dynamically added here -->
+              </ul>
+            </div>
+            <!-- Download button for Beta app -->
+            <div class="mb-4">
+              <button id="downloadButton2" class="text-white bg-gradient-to-r from-blue-500 to-cyan-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 rounded-full py-3 px-10 font-bold" onclick="toggleBetaArchitecturePopup()">DOWNLOAD BETA RELEASE</button>
+            </div>
+            <!-- Beta Architecture selection popup -->
+            <div id="betaArchitecturePopup" style="display: none; width: 315px; padding-bottom: 20px; top: calc(40% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeBetaArchitecturePopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <br>
+              <!-- Release Notes -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">What's New On Beta Release?</h2>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <p id="betaReleaseNotes" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- View Full Changelogs button -->
+              <button class="text-blue-500 hover:underline text-sm mb-2" onclick="viewFullChangelogs('beta')" style="font-family: Arial, sans-serif; font-size: 10px;">View All Changelogs</button>
+              <!-- Last updated timestamp for Beta -->
+              <p id="betaLastUpdate" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <!-- Title -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">Download</h2>
+              <!-- Architecture options -->
+              <ul class="space-y-2" id="betaArchitectureList">
+                <!-- Architecture options will be dynamically added here -->
+              </ul>
+            </div>
+            <!-- Download button for Alpha app -->
+            <div>
+              <button id="downloadButton3" class="text-white bg-gradient-to-r from-red-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 rounded-full py-3 px-10 font-bold" onclick="toggleAlphaArchitecturePopup()">DOWNLOAD ALPHA RELEASE</button>
+            </div>
+            <!-- Alpha Architecture selection popup -->
+            <div id="architecturePopup" style="display: none; width: 315px; padding-bottom: 20px; top: calc(40% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeArchitecturePopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <br>
+              <!-- Release Notes -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">What's New On Alpha Release?</h2>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <p id="alphaReleaseNotes" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- View Full Changelogs button -->
+              <button class="text-blue-500 hover:underline text-sm mb-2" onclick="viewFullChangelogs('alpha')" style="font-family: Arial, sans-serif; font-size: 10px;">View All Changelogs</button>
+              <!-- Last updated timestamp for Alpha -->
+              <p id="alphaLastUpdate" class="text-xs mb-2" style="font-family: 'Roboto', sans-serif; font-weight: normal;"></p>
+              <!-- Transparent Line -->
+              <div style="border-bottom: 1px solid #32373e; margin-bottom: 10px;"></div>
+              <!-- Title -->
+              <h2 class="text-lg font-semibold mb-1" style="font-family: Arial, sans-serif; font-size: 14px;">Download</h2>
+              <!-- Architecture options -->
+              <ul class="space-y-2" id="architectureList">
+                <!-- Architecture options will be dynamically added here -->
+              </ul>
+              <!-- Information link -->
+              <div class="text-center mt-4">
+                <a href="#" onclick="toggleInfoPopup()" class="text-blue-500 hover:underline text-sm" style="font-family: Arial, sans-serif; font-size: 10px;">ⓘ Click For Info On Architecture</a>
+              </div>
+            </div>
+            <!-- Information popup -->
+            <div id="infoPopup" style="display: none; width: 315px; padding-bottom: 20px; top: calc(40% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 left-2 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="toggleInfoPopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <br>
+              <!-- Information text -->
+              <div class="text-xs">
+                <p class="mb-1">
+                  <strong>
+                    <u>ARM64-v8a</u> • </strong>
+                  <i>Newer devices (post-2016)</i>
+                </p>
+                <p class="mb-1">
+                  <strong>
+                    <u>armeabi-v7a</u> • </strong>
+                  <i>Older or budget devices (pre-2016)</i>
+                </p>
+                <p class="mb-1">
+                  <strong>
+                    <u>x86</u> • </strong>
+                  <i>Some tablets with Intel processors</i>
+                </p>
+                <p class="mb-1">
+                  <strong>
+                    <u>x86_64</u> • </strong>
+                  <i>Newer tablets with 64-bit Intel processors</i>
+                </p>
+                <br>
+                <p class="mb-1">
+                  <strong>
+                    <u>To check:</u>
+                  </strong>
+                </p>
+                <p class="mb-1">
+                  <strong>
+                    <u>App</u> • </strong>
+                  <i>Use "CPU-Z" or "Droid Hardware Info" from Google Play</i>
+                </p>
+                <p class="mb-1">
+                  <strong>
+                    <u>Online</u> • </strong>
+                  <i>Check the manufacturer's website or tech review sites</i>
+                </p>
+              </div>
+            </div>
+            <style>
+              .popup {
+                border: 0px solid white;
+              }
+            </style>
+            <script>
+              let currentPopup = null;
+              // Function to toggle the architecture selection popup for Universal App
+              function toggleUniversalArchitecturePopup() {
+                fetchUniversalReleaseInfo(); // Fetch Universal release info
+                togglePopup('universalArchitecturePopup');
+              }
+              // Function to toggle the architecture selection popup for Beta App
+              function toggleBetaArchitecturePopup() {
+                fetchBetaReleaseInfo(); // Fetch Beta release info
+                togglePopup('betaArchitecturePopup');
+              }
+              // Function to toggle the architecture selection popup for Alpha App
+              function toggleAlphaArchitecturePopup() {
+                fetchReleaseInfo(); // Fetch Alpha release info
+                togglePopup('architecturePopup');
+              }
+              // Function to toggle any popup by ID
+              function togglePopup(popupId) {
+                const popup = document.getElementById(popupId);
+                if (popup.style.display === 'none') {
+                  closeCurrentPopup(); // Close current popup if any
+                  popup.style.display = 'block'; // Open new popup
+                  currentPopup = popup;
+                } else {
+                  popup.style.display = 'none'; // Close popup if already open
+                  currentPopup = null;
+                }
+              }
+              // Function to close the current popup
+              function closeCurrentPopup() {
+                if (currentPopup) {
+                  currentPopup.style.display = 'none';
+                  currentPopup = null;
+                }
+              }
+              // Function to fetch release information for Universal App from GitHub API
+              async function fetchUniversalReleaseInfo() {
+                const repo = 'rebelonion/Dantotsu'; // GitHub repository owner and name
+                const apiUrl = `https://api.github.com/repos/${repo}/releases/latest`;
+                try {
+                  const response = await fetch(apiUrl);
+                  const data = await response.json();
+                  if (response.ok) {
+                    // Update release notes
+                    document.getElementById('universalReleaseNotes').textContent = data.body;
+                    // Truncate release notes to 5 lines initially
+                    truncateReleaseNotes('universalReleaseNotes');
+                    updateUniversalArchitectureButtons(data.assets);
+                    // Add last update timestamp
+                    const lastUpdateTimestamp = new Date(data.published_at).toISOString(); // Convert to ISO string
+                    document.getElementById('universalLastUpdate').innerHTML = `Last update: 
+																																			
+																																	
+																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
+                  } else {
+                    console.error('Failed to fetch release information:', data.message);
+                  }
+                } catch (error) {
+                  console.error('Error fetching release information:', error);
+                }
+              }
+              // Function to redirect to the download link for the Alpha APK
+              function redirectToUniversalApkDownload(downloadUrl) {
+                // Check if the download URL is provided
+                if (downloadUrl) {
+                  // Open the download link in a new tab
+                  window.open(downloadUrl, '_blank');
+                } else {
+                  // Notify the user if the download link is not available
+                  alert('Download link is not available.');
+                }
+              }
+              // Function to fetch release information for Beta App from GitHub API
+              async function fetchBetaReleaseInfo() {
+                const repo = 'rebelonion/Dantotsu'; // GitHub repository owner and name
+                const apiUrl = `https://api.github.com/repos/${repo}/releases`;
+                try {
+                  const response = await fetch(apiUrl);
+                  const data = await response.json();
+                  if (response.ok) {
+                    // Filter out releases with "beta" in their name
+                    const betaRelease = data.find(release => release.name.toLowerCase().includes('beta'));
+                    if (betaRelease) {
+                      // Update release notes
+                      document.getElementById('betaReleaseNotes').textContent = betaRelease.body;
+                      // Truncate release notes to 5 lines initially
+                      truncateReleaseNotes('betaReleaseNotes');
+                      updateBetaArchitectureButtons(betaRelease.assets);
+                      // Add last update timestamp
+                      const lastUpdateTimestamp = new Date(betaRelease.published_at).toISOString(); // Use betaRelease's timestamp
+                      document.getElementById('betaLastUpdate').innerHTML = `Last update: 
+																																			
+																																	
+																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
+                    } else {
+                      console.error('No beta release found.');
+                      alert('No beta release found.');
+                    }
+                  } else {
+                    console.error('Failed to fetch release information from GitHub.');
+                    alert('Failed to fetch release information from GitHub.');
+                  }
+                } catch (error) {
+                  console.error('Error fetching beta release information:', error);
+                  alert('Error fetching beta release information from GitHub.');
+                }
+              }
+              // Function to redirect to the download link for the Beta APK
+              function redirectToBetaApkDownload(downloadUrl) {
+                // Check if the download URL is provided
+                if (downloadUrl) {
+                  // Open the download link in a new tab
+                  window.open(downloadUrl, '_blank');
+                } else {
+                  // Notify the user if the download link is not available
+                  alert('Download link is not available.');
+                }
+              }
+              // Function to fetch release information for Alpha App from GitHub API
+              async function fetchReleaseInfo() {
+                const repo = 'kaorlol/dantotsu-updater'; // GitHub repository owner and name
+                const apiUrl = `https://api.github.com/repos/${repo}/releases/latest`;
+                try {
+                  const response = await fetch(apiUrl);
+                  const data = await response.json();
+                  if (response.ok) {
+                    // Update release notes
+                    document.getElementById('alphaReleaseNotes').textContent = data.body;
+                    // Truncate release notes to 5 lines initially
+                    truncateReleaseNotes('alphaReleaseNotes');
+                    updateArchitectureButtons(data.assets);
+                    // Add last update timestamp
+                    const lastUpdateTimestamp = new Date(data.published_at).toISOString(); // Convert to ISO string
+                    document.getElementById('alphaLastUpdate').innerHTML = `Last update: 
+																																			
+																																	
+																																	<time datetime="${lastUpdateTimestamp}">${formatTimestamp(lastUpdateTimestamp)}</time>`;
+                  } else {
+                    console.error('Failed to fetch release information:', data.message);
+                  }
+                } catch (error) {
+                  console.error('Error fetching release information:', error);
+                }
+              }
+              // Function to format timestamp in human-readable format
+              function formatTimestamp(timestamp) {
+                const currentDate = new Date();
+                const lastUpdateDate = new Date(timestamp); // Use provided timestamp
+                const diff = Math.floor((currentDate - lastUpdateDate) / 1000); // Difference in seconds
+                if (diff < 60) {
+                  return 'just now';
+                } else if (diff < 3600) {
+                  const minutes = Math.floor(diff / 60);
+                  return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+                } else if (diff < 86400) {
+                  const hours = Math.floor(diff / 3600);
+                  return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+                } else {
+                  const days = Math.floor(diff / 86400);
+                  return `${days} day${days > 1 ? 's' : ''} ago`;
+                }
+              }
+              // Call fetch function to load release information
+              fetchReleaseInfo();
+              fetchUniversalReleaseInfo();
+              fetchBetaReleaseInfo();
+              // Function to redirect to the download link for the Alpha APK
+              function redirectToApkDownload(downloadUrl) {
+                // Check if the download URL is provided
+                if (downloadUrl) {
+                  // Open the download link in a new tab
+                  window.open(downloadUrl, '_blank');
+                } else {
+                  // Notify the user if the download link is not available
+                  alert('Download link is not available.');
+                }
+              }
+              // Function to update architecture buttons for Universal App with file sizes and download icons
+              function updateUniversalArchitectureButtons(assets) {
+                const universalArchitectureList = document.getElementById('universalArchitectureList');
+                universalArchitectureList.innerHTML = ''; // Clear existing buttons
+                assets.forEach(asset => {
+                  const architecture = asset.name.split('.')[0]; // Extract architecture from file name
+                  const fileSize = (asset.size / (1024 * 1024)).toFixed(2); // Convert bytes to MB
+                  const listItem = document.createElement('li');
+                  listItem.classList.add('text-center'); // Align content center
+                  const dot = document.createElement('span');
+                  dot.textContent = '\u2022 '; // Unicode character for bullet point
+                  listItem.appendChild(dot);
+                  const button = document.createElement('button');
+                  button.textContent = `${architecture} (${fileSize} MB)`;
+                  button.classList.add('text-base', 'font-normal', 'hover:underline', 'focus:outline-none', 'focus:ring', 'rounded-md', 'py-1');
+                  button.onclick = () => redirectToUniversalApkDownload(asset.browser_download_url); // Use browser download URL
+                  const downloadIcon = document.createElement('i');
+                  downloadIcon.className = 'fa fa-download ml-2'; // Adding downloading icon
+                  button.appendChild(downloadIcon); // Adding download icon
+                  listItem.appendChild(button);
+                  universalArchitectureList.appendChild(listItem);
+                });
+              }
+              // Function to update architecture buttons for Beta App with file sizes and download icons
+              function updateBetaArchitectureButtons(assets) {
+                const betaArchitectureList = document.getElementById('betaArchitectureList');
+                betaArchitectureList.innerHTML = ''; // Clear existing buttons
+                assets.forEach(asset => {
+                  const architecture = asset.name.split('.')[0]; // Extract architecture from file name
+                  const fileSize = (asset.size / (1024 * 1024)).toFixed(2); // Convert bytes to MB
+                  const listItem = document.createElement('li');
+                  listItem.classList.add('text-center'); // Align content center
+                  const dot = document.createElement('span');
+                  dot.textContent = '\u2022 '; // Unicode character for bullet point
+                  listItem.appendChild(dot);
+                  const button = document.createElement('button');
+                  button.textContent = `${architecture} (${fileSize} MB)`;
+                  button.classList.add('text-base', 'font-normal', 'hover:underline', 'focus:outline-none', 'focus:ring', 'rounded-md', 'py-1');
+                  button.onclick = () => redirectToBetaApkDownload(asset.browser_download_url); // Use browser download URL
+                  const downloadIcon = document.createElement('i');
+                  downloadIcon.className = 'fa fa-download ml-2'; // Adding downloading icon
+                  button.appendChild(downloadIcon); // Adding download icon
+                  listItem.appendChild(button);
+                  betaArchitectureList.appendChild(listItem);
+                });
+              }
+              // Function to update architecture buttons for Alpha App with file sizes and download icons
+              function updateArchitectureButtons(assets) {
+                const architectureList = document.getElementById('architectureList');
+                architectureList.innerHTML = ''; // Clear existing buttons
+                assets.forEach(asset => {
+                  const architecture = asset.name.split('.')[0]; // Extract architecture from file name
+                  const fileSize = (asset.size / (1024 * 1024)).toFixed(2); // Convert bytes to MB
+                  const listItem = document.createElement('li');
+                  listItem.classList.add('text-center'); // Align content center
+                  const dot = document.createElement('span');
+                  dot.textContent = '\u2022 '; // Unicode character for bullet point
+                  listItem.appendChild(dot);
+                  const button = document.createElement('button');
+                  button.textContent = `${architecture} (${fileSize} MB)`;
+                  button.classList.add('text-base', 'font-normal', 'hover:underline', 'focus:outline-none', 'focus:ring', 'rounded-md', 'py-1');
+                  button.onclick = () => redirectToApkDownload(asset.browser_download_url); // Use browser download URL
+                  const downloadIcon = document.createElement('i');
+                  downloadIcon.className = 'fa fa-download ml-2'; // Adding downloading icon
+                  button.appendChild(downloadIcon); // Adding download icon
+                  listItem.appendChild(button);
+                  architectureList.appendChild(listItem);
+                });
+              }
+              // Function to truncate release notes to 5 lines
+              function truncateReleaseNotes(elementId) {
+                const releaseNotes = document.getElementById(elementId);
+                const lines = releaseNotes.textContent.split('\n');
+                if (lines.length > 10) {
+                  releaseNotes.textContent = lines.slice(0, 10).join('\n') + '...';
+                }
+              }
+              // Function to close the architecture selection popup for Universal App
+              function closeUniversalArchitecturePopup() {
+                const universalArchitecturePopup = document.getElementById('universalArchitecturePopup');
+                universalArchitecturePopup.style.display = 'none';
+              }
+              // Function to close the architecture selection popup for Beta App
+              function closeBetaArchitecturePopup() {
+                const BetaArchitecturePopup = document.getElementById('betaArchitecturePopup');
+                betaArchitecturePopup.style.display = 'none';
+              }
+              // Function to close the architecture selection popup for Alpha App
+              function closeArchitecturePopup() {
+                const architecturePopup = document.getElementById('architecturePopup');
+                architecturePopup.style.display = 'none';
+              }
+              // Function to toggle the information popup
+              function toggleInfoPopup() {
+                const infoPopup = document.getElementById('infoPopup');
+                const architecturePopup = document.getElementById('architecturePopup');
+                if (infoPopup.style.display === 'none') {
+                  infoPopup.style.display = 'block';
+                  architecturePopup.style.display = 'none'; // Hide architecture popup
+                } else {
+                  infoPopup.style.display = 'none';
+                  architecturePopup.style.display = 'block'; // Show architecture popup
+                }
+              }
+              // Function to view full changelogs of universal
+              function viewFullChangelogs(app) {
+                let url;
+                switch (app) {
+                  case 'universal':
+                    url = 'https://github.com/rebelonion/Dantotsu/releases/latest';
+                    break;
+                  case 'beta':
+                    fetchFullBetaChangelogs();
+                    return;
+                  case 'alpha':
+                    url = 'https://github.com/kaorlol/dantotsu-updater/releases';
+                    break;
+                  default:
+                    return;
+                }
+                window.open(url, '_blank');
+              }
+              // Function to fetch full changelogs of beta
+              async function fetchFullBetaChangelogs() {
+                const apiUrl = 'https://api.github.com/repos/rebelonion/Dantotsu/releases';
+                try {
+                  const response = await fetch(apiUrl);
+                  if (!response.ok) throw new Error('Failed to fetch release information');
+                  const data = await response.json();
+                  const betaRelease = data.find(release => release.name.toLowerCase().includes('beta'));
+                  if (betaRelease) {
+                    window.open(betaRelease.html_url, '_blank');
+                  } else {
+                    console.error('No beta release found.');
+                    alert('No beta release found.');
+                  }
+                } catch (error) {
+                  console.error('Error fetching beta release information:', error);
+                  alert('Error fetching beta release information from GitHub.');
+                }
+              }
+            </script>
+            <br>
+            <!-- Extension button -->
+            <a href="#" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors" onclick="toggleExtensionPopup()">Extensions</a>
+            <!-- Extension selection popup -->
+            <div id="extensionPopup" style="display: none; width: 230px; padding-bottom: 20px; top: calc(73% + 3px); left: 50%; transform: translateX(-50%); background-color: #212126;" class="rounded-md absolute z-10 bg-opacity-75 p-4 popup">
+              <!-- Close button -->
+              <button class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-gray-700 focus:outline-none" onclick="closeExtensionPopup()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <!-- Buttons for anime and manga -->
+              <button class="bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full font-bold transition-colors mr-2" onclick="selectCategory('anime')">Anime</button>
+              <button class="bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full font-bold transition-colors" onclick="selectCategory('manga')">Manga</button>
+            </div>
+            <script>
+              // Function to toggle the extension selection popup
+              function toggleExtensionPopup() {
+                togglePopup('extensionPopup');
+              }
+              // Function to toggle any popup by ID
+              function togglePopup(popupId) {
+                const popup = document.getElementById(popupId);
+                if (popup.style.display === 'none') {
+                  closeCurrentPopup(); // Close current popup if any
+                  popup.style.display = 'block'; // Open new popup
+                  currentPopup = popup;
+                } else {
+                  popup.style.display = 'none'; // Close popup if already open
+                  currentPopup = null;
+                }
+              }
+              // Function to close the current popup
+              function closeCurrentPopup() {
+                if (currentPopup) {
+                  currentPopup.style.display = 'none';
+                  currentPopup = null;
+                }
+              }
+              // Function to handle category selection
+              function selectCategory(category) {
+                if (category === 'anime') {
+                  window.location.href = "/anime-extensions";
+                } else if (category === 'manga') {
+                  window.location.href = "/manga-extensions";
+                }
+              }
+            </script>
+            <!-- View versions -->
+            <a href="https://github.com/rebelonion/Dantotsu/releases" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Versions</a>
           </div>
-          <div class="flex justify-center items-center mt-8 space-x-4">
-            <!-- Fork button-->
-            <a href="https://github.com/MrBoomDeveloper/Awery" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Forks</a>
-            <!-- view features button -->
-            <a href="#features" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Features</a>
+          <br>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <!-- Total download count button -->
+            <button id="totalDownloadCountButton" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-2 px-6 rounded-md font-bold transition-colors" style="background-color: #555454; opacity: 0.8; height: 40px; display: flex; align-items: center;">
+              <img src="images/androidicon.png" alt="Android Icon" style="width: 20px; height: 20px; margin-right: 5px;">
+              <span>Downloads</span>
+            </button>
           </div>
+          <script>
+            // Function to fetch and display the total download count
+            async function fetchTotalDownloadCount() {
+              const stableRepo = 'rebelonion/Dantotsu'; // GitHub repository owner and name for stable and beta release
+              const alphaRepo = 'kaorlol/dantotsu-updater'; // GitHub repository owner and name for alpha release
+              try {
+                const stableResponse = await fetch(`https://api.github.com/repos/${stableRepo}/releases`);
+                const alphaResponse = await fetch(`https://api.github.com/repos/${alphaRepo}/releases`);
+                const [stableData, alphaData] = await Promise.all([stableResponse.json(), alphaResponse.json()]);
+                const totalDownloadCount = calculateTotalDownloadCount(stableData) + calculateTotalDownloadCount(alphaData);
+                // Update the button text with the total download count and the Android icon
+                document.getElementById('totalDownloadCountButton').innerHTML = `
+																																			
+																																			<img src="images/androidicon.png" alt="Android Icon" style="width: 20px; height: 20px; margin-right: 5px;"> Downloads: ${totalDownloadCount}`;
+              } catch (error) {
+                console.error('Error fetching total download count:', error);
+                // Display an error message to the user if there's an issue fetching the download count
+                alert('Error fetching total download count. Please try again later.');
+              }
+            }
+            // Function to calculate the total download count for a given set of releases
+            function calculateTotalDownloadCount(releases) {
+              return releases.reduce((acc, release) => {
+                return acc + release.assets.reduce((assetAcc, asset) => assetAcc + asset.download_count, 0);
+              }, 0);
+            }
+            // Call fetchTotalDownloadCount() when the page loads
+            window.onload = fetchTotalDownloadCount;
+          </script>
         </div>
       </div>
       </div>
       <div id="opbg" class="absolute inset-0 bg-black bg-opacity-80 transition-colors"></div>
     </section>
-    <!-- FEATURE 1 -->
-    <section class="text-white py-8 shadow-md" id="features">
-      <div class="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between">
-        <!-- Box one, feature description -->
-        <div class="md:w-1/2 md:pr-4 mb-4 md:mb-0">
-          <h2 class="text-3xl font-bold mb-2">Catch Up On Your Favorites!</h2>
-          <p class="text-lg"> Dantotsu is designed for anime and manga enthusiasts who want to catch up on their favorite series. It's a user-friendly app that lets you enjoy your "favorite" anime and manga on the go. With integrated Anilist support, you can easily track your progress and stay up to date with what your friends are watching and reading. </p>
-        </div>
-        <!-- Box two, image of feature -->
-        <div class="md:w-1/2 md:w-1/4">
-          <img src="images/Screenshot_20231031-130249_Dantotsu-portrait.png" alt="Feature Screenshot" class="w-full h-auto" />
-        </div>
-      </div>
-    </section>
-    <!-- FEATURE 2 -->
-    <section class="bg-purple-950 text-white py-8" id="section2">
-      <div class="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between">
-        <!-- For mobile, text on top and image below -->
-        <div class="md:hidden">
-          <h2 class="text-3xl font-bold mb-2"> Everything Is In Your Finger-tips! </h2>
-          <p class="text-lg"> Say goodbye to the hassle of opening a browser to search for your favorite anime or manga. Dantotsu, a versatile client built upon Anilist & Tachi/Aniyomi. You can have Aniwave for anime watching and Mangadex for reading manga, puts everything you need right at your fingertips. There's no need to leave the app; just install it, and everything you love magically appears when you're ready to explore and discover new content. </p>
-        </div>
-        <div class="md:hidden">
-          <img src="images/Screenshot_20231031-132510_Dantotsu-portrait.png" alt="Feature Screenshot" class="w-full h-auto" />
-        </div>
-        <!-- Box two, image of feature (image on the left for desktop) -->
-        <div class="md:w-1/2 md:w-1/4 hidden md:block">
-          <img src="images/Screenshot_20231031-132510_Dantotsu-portrait.png" alt="Feature Screenshot" class="w-full h-auto" />
-        </div>
-        <!-- Box one, feature description (text on the right for desktop) -->
-        <div class="md:w-1/2 md:pl-4 mb-4 md:mb-0 hidden md:block">
-          <h2 class="text-3xl font-bold mb-2"> Everything Is In Your Finger-tips! </h2>
-          <p class="text-lg"> Say goodbye to the hassle of opening a browser to search for your favorite anime or manga. Dantotsu, a versatile client built upon Anilist & Tachi/Aniyomi. You can have Aniwave for anime watching and Mangadex for reading manga, puts everything you need right at your fingertips. There's no need to leave the app; just install it, and everything you love magically appears when you're ready to explore and discover new content. </p>
-        </div>
-      </div>
-    </section>
-    <!--Feature 3-->
-    <section class="text-white py-8" id="section1">
-      <div class="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between">
-        <!-- Box one, feature description -->
-        <div class="md:w-1/2 md:pr-4 mb-4 md:mb-0">
-          <h2 class="text-3xl font-bold mb-2">Make Dantotsu Yours!</h2>
-          <p class="text-lg"> Dantotsu is designed to offer a customizable experience. With a growing collection of materials that include three themes and more (according to the latest version), you can personalize your app to match your preferences. Not only can you change the theme to your liking, but you can also select your favorite anime character as the app icon. Additionally, you have the option to customize your home page, allowing you to choose the content that matters most to you. </p>
-        </div>
-        <!-- Box two, image of feature -->
-        <div class="md:w-1/2 md:w-1/4">
-          <img src="images/Screenshot_20231029_232053_Dantotsu-portrait.png" alt="Feature Screenshot" class="w-full h-auto" />
-        </div>
-      </div>
-    </section>
-    <!-- Review Section-->
-    <section class="py-8 text-white">
-      <div class="container mx-auto p-4">
-        <button type="button" id="collapsible" class="text-lg mb-2 font-bold bg-black text-white hover:bg-gray-900 focus:outline-none py-4 px-4 w-full rounded-md shadow-lg text-center"> Reviews for Dantotsu </button>
-        <div id="content" class="p-4 text-white bg-black hidden rounded-md shadow-lg">
-          <div class="bg-black p-4 rounded-lg shadow-xl text-white">
-            <div class="flex items-center mb-2">
-              <img src="https://avatars.githubusercontent.com/u/138523882?v=4" alt="Reviewer Avatar" class="w-12 h-12 rounded-full" />
-              <p class="text-lg font-bold ml-2">zaxx_69</p>
-            </div>
-            <p class="text-white-600"> "The UI of this app is peak, and the support of the dev is also good. The ability to watch and read anime/manga in one app with good UI is rare nowadays. It also supports blazingly fast streaming and downloading. The Anilist support of the app helps me track all my anime/manga. The extension support along with tweaks is nothing short of amazing. Glad to be a user of this app." </p>
-            <hr class="my-4" />
-            <div class="flex items-center mb-2">
-              <img src="https://cdn.discordapp.com/avatars/1136631037686992936/04211ea9e9bea29afae3ed8ec83dadd1.webp?size=80" alt="Reviewer Avatar" class="w-12 h-12 rounded-full" />
-              <p class="text-lg font-bold ml-2">jotaro_4k20</p>
-            </div>
-            <p class="text-white-600"> "One of the best anime streaming and manga reading app out there ! The anime episodes loads in a flash ....and also the UI of the app is dope 🔥 ! A 10/10 app for animangas 😉" </p>
-            <hr class="my-4" />
-            <div class="flex items-center mb-2">
-              <img src="https://cdn.discordapp.com/avatars/765503027561758740/cdd98823d776b5673d550bb579ce749e.png?size=1024" alt="Reviewer Avatar" class="w-12 h-12 rounded-full" />
-              <p class="text-lg font-bold ml-2">professor_x_47</p>
-            </div>
-            <p class="text-white-600"> "I knew nothing about anime or Manga yesterday, but today I downloaded this app and its really good, the community is super friendly too, 10/10 of course...🤍 " </p>
-            <hr class="my-4" />
-            <div class="flex items-center mb-2">
-              <img src="https://cdn.discordapp.com/avatars/425920277638021120/e13e20368ea6eed7fdea3bd91b818d60.webp?size=1024&format=webp&width=0&height=320" alt="Reviewer Avatar" class="w-12 h-12 rounded-full" />
-              <p class="text-lg font-bold ml-2">iftekhar994</p>
-            </div>
-            <p class="text-white-600"> " I honestly couldn't find anything to complain about this app. This is such a good app. 10/10 " </p>
-            <hr class="my-4" />
-            <div class="flex items-center mb-2">
-              <img src="https://cdn.discordapp.com/avatars/119851802479951874/ce8ef248f1fb22d35d2ee5b141a6fedf.png?size=1024" alt="Reviewer Avatar" class="w-12 h-12 rounded-full" />
-              <p class="text-lg font-bold ml-2">thetruedondotta</p>
-            </div>
-            <p class="text-white-600"> "good app 9/10 sharing to all my friends 😁" </p>
-            <hr class="my-4" />
-            <h6 class="text-center mt-4"> Want to leave a review? Join our <a href="https://discord.com/invite/4HPZ5nAWwM" class="text-purple-500 hover:text-purple-600">Discord</a>! </h6>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--Staff popup-->
     <div id="staffPopup" class="fixed inset-0 z-50 flex items-center justify-center hidden rounded-md">
       <div class="bg-slate-800 p-4 md:mx-4 rounded-lg shadow-lg w-full md:w-auto max-h-[80vh] overflow-y-auto">
         <div class="text-right">
@@ -426,6 +801,7 @@
                 document.getElementById("rebelOnionAvatarPopup").removeEventListener("click", handleClick);
               });
             });
+          </script>
           </script>
           <div class="bg-slate-900 p-4 rounded-lg shadow-md">
             <img src="https://avatars.githubusercontent.com/u/149729762?v=4" alt="Wai What" class="w-20 h-20 rounded-full mb-2" />
@@ -532,19 +908,19 @@
           </center>
         </p>
         <div class="md:w-full text-center md:text-right">
-          <button id="openPopup" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full"> Credits </button>
+          <button id="openPopup" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">Credits</button>
         </div>
       </div>
     </footer>
   </body>
   <script>
     // navbar
-    window.addEventListener("scroll", function() {
-      const navbar = document.querySelector("nav");
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('nav');
       if (window.scrollY > 0) {
-        navbar.classList.add("bg-opacity-80");
+        navbar.classList.add('bg-opacity-80');
       } else {
-        navbar.classList.remove("bg-opacity-80");
+        navbar.classList.remove('bg-opacity-80');
       }
     });
     // // JavaScript to handle the language dropdown
@@ -568,8 +944,8 @@
     //   }
     // });
     // const languageButtons = document.querySelectorAll('.language-button');
-    // Change the language when a language button is clicked
-    // keep the language buttons unhidden
+    // Change the language when a language button is clicked 
+    // keep the language buttons unhidden 
     // languageButtons.forEach((button) => {
     //   button.addEventListener('click', () => {
     //     const language = button.dataset.lang;
@@ -584,21 +960,13 @@
     //   });
     // });
     // hero
-    window.addEventListener("scroll", function() {
-      const opbg = document.querySelector("#opbg");
+    window.addEventListener('scroll', function() {
+      const opbg = document.querySelector('#opbg');
       if (window.scrollY > 600) {
-        opbg.classList.add("bg-opacity-100");
+        opbg.classList.add('bg-opacity-100');
       } else {
-        opbg.classList.remove("bg-opacity-100");
+        opbg.classList.remove('bg-opacity-100');
       }
-    });
-    // Open the staff showcase popup
-    document.getElementById("openPopup").addEventListener("click", function() {
-      document.getElementById("staffPopup").classList.remove("hidden");
-    });
-    // Close the staff showcase popup
-    document.getElementById("closePopup").addEventListener("click", function() {
-      document.getElementById("staffPopup").classList.add("hidden");
     });
     // reviews
     const collapsibleButton = document.getElementById("collapsible");
