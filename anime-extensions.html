@@ -311,13 +311,16 @@
 
           function filterExtensionsByLanguage(extensions, lang) {
             if (lang === 'all') {
-              return extensions.filter(ext => ext.lang === 'all');
+              return extensions.filter(ext => ext.lang === lang);
             } else {
               return extensions.filter(ext => ext.lang === lang);
             }
           }
-          document.getElementById('languageDropdown').addEventListener('click', () => {
-            document.getElementById('languageOptions').classList.toggle('hidden');
+          // Initialize the dropdown and options
+          const languageDropdown = document.getElementById('languageDropdown');
+          const languageOptions = document.getElementById('languageOptions');
+          languageDropdown.addEventListener('click', () => {
+            languageOptions.classList.toggle('hidden');
           });
           document.querySelectorAll('.language-button').forEach(button => {
             button.addEventListener('click', async (e) => {
@@ -325,7 +328,14 @@
               const extensions = await fetchExtensions();
               const filteredExtensions = filterExtensionsByLanguage(extensions, lang);
               updateExtensionList(filteredExtensions);
+              languageOptions.classList.add('hidden'); // Close dropdown on selection
             });
+          });
+          // Close the language options when clicking outside of the dropdown
+          window.addEventListener('click', (event) => {
+            if (!languageDropdown.contains(event.target) && !languageOptions.contains(event.target)) {
+              languageOptions.classList.add('hidden');
+            }
           });
           async function initializePage() {
             const extensions = await fetchExtensions();
