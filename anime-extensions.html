@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Anilist Client, OpenSource, Tachiyomi, Aniyomi, Anime app, Anilist Sync">
     <meta property="og:title" content="Download Aniyomi Extensions!">
-    <meta property="og:description" content="All Aniyomi Extensions Available">
-    <meta property="og:url" content="/extension">
+    <meta property="og:description" content="All Aniyomi Extensions">
+    <meta property="og:url" content="/anime-extensions">
     <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
     <meta name="theme-color" content="#4d006b" />
     <meta name="twitter:card" content="summary_large_image">
@@ -214,10 +214,11 @@
     <section id="hero" class="text-white py-20 h-screen shadow-lg relative" style="background-image: url('images/ei_1698849603612-removebg-preview-1.png'); background-size: cover; background-position: center;">
       <div class="container h-full mx-auto flex flex-col justify-center items-center relative z-10">
         <div class="text-center">
-          <h1 class="text-5xl font-bold" data-lang="">Aniyomi Extensions</h1> &nbsp;
+          <h1 class="text-5xl font-bold" data-lang="">Anime Extensions</h1> &nbsp;
         </div>
         <div class="extension-list" id="extensionList">
-          <div class="extension-item" data-name="" data-version="" data-lang="">
+          <!-- Template for extension item -->
+          <div class="extension-item template" data-name="" data-version="" data-lang="" style="display: none;">
             <img class="extension-logo" src="">
             <div class="extension-details">
               <h2 class="extension-name"></h2>
@@ -263,68 +264,75 @@
             }
             return extensions;
           }
-          async function updateExtensionList(extensions) {
-            const extensionList = document.getElementById('extensionList');
-            const templateItem = extensionList.querySelector('.extension-item');
-            extensions.forEach(async (ext) => {
-              const item = templateItem.cloneNode(true);
-              item.style.display = 'block'; // Make the item visible
-              item.dataset.name = ext.name;
-              item.dataset.version = ext.version;
-              item.dataset.lang = ext.lang;
-              item.dataset.nsfw = ext.nsfw;
-              const img = item.querySelector('.extension-logo');
-              const imgUrls = repos.map(repo => `${repo}icon/${ext.pkg}.png`);
-              const workingImgUrl = await findWorkingUrl(imgUrls);
-              img.src = workingImgUrl || 'default-image.png'; // Fallback image if none found
-              let displayName = ext.name.replace(/^Aniyomi:\s*/, '');
-              // Add 🔞 emoji for NSFW extensions
-              if (ext.nsfw === 1) {
-                displayName += ' 🔞';
-              }
-              // Add line break for multi-word extension names
-              if (displayName.includes(' ')) {
-                displayName = displayName.replace(/\s/g, '\n');
-              } else if (displayName.length > 9) { // Add .. if the name has more than 9 characters
-                displayName = displayName.substring(0, 9) + '..';
-              }
-              const name = item.querySelector('.extension-name');
-              name.textContent = displayName;
-              const version = item.querySelector('.extension-version');
-              version.textContent = `Version: ${ext.version}`;
-              const link = item.querySelector('.download-link');
-              const downloadUrls = repos.map(repo => `${repo}apk/${ext.apk}`);
-              const workingDownloadUrl = await findWorkingUrl(downloadUrls);
-              link.href = workingDownloadUrl || '#'; // Fallback if no URL found
-              extensionList.appendChild(item);
-            });
-            templateItem.remove(); // Remove the template item
+          async function createExtensionItem(ext) {
+            const templateItem = document.querySelector('.extension-item.template');
+            const item = templateItem.cloneNode(true);
+            item.classList.remove('template');
+            item.style.display = 'none'; // Initially hidden
+            item.dataset.name = ext.name;
+            item.dataset.version = ext.version;
+            item.dataset.lang = ext.lang;
+            item.dataset.nsfw = ext.nsfw;
+            const img = item.querySelector('.extension-logo');
+            const imgUrls = repos.map(repo => `${repo}icon/${ext.pkg}.png`);
+            const workingImgUrl = await findWorkingUrl(imgUrls);
+            img.src = workingImgUrl || 'default-image.png'; // Fallback image if none found
+            let displayName = ext.name.replace(/^Aniyomi:\s*/, '');
+            if (ext.nsfw === 1) {
+              displayName += ' 🔞';
+            }
+            if (displayName.includes(' ')) {
+              displayName = displayName.replace(/\s/g, '\n');
+            } else if (displayName.length > 9) {
+              displayName = displayName.substring(0, 9) + '..';
+            }
+            const name = item.querySelector('.extension-name');
+            name.textContent = displayName;
+            const version = item.querySelector('.extension-version');
+            version.textContent = `Version: ${ext.version}`;
+            const link = item.querySelector('.download-link');
+            const downloadUrls = repos.map(repo => `${repo}apk/${ext.apk}`);
+            const workingDownloadUrl = await findWorkingUrl(downloadUrls);
+            link.href = workingDownloadUrl || '#'; // Fallback if no URL found
+            return item;
           }
 
-          function filterExtensionsByLanguage(lang) {
-            const extensionItems = document.querySelectorAll('.extension-item');
-            extensionItems.forEach(item => {
-              const itemLang = item.dataset.lang;
-              if (lang === 'all') {
-                item.style.display = itemLang === 'all' ? 'block' : 'none';
-              } else {
-                item.style.display = (itemLang === lang) ? 'block' : 'none';
-              }
+          function updateExtensionList(filteredExtensions) {
+            const extensionList = document.getElementById('extensionList');
+            // Clear previous items except the template
+            extensionList.querySelectorAll('.extension-item:not(.template)').forEach(item => item.remove());
+            filteredExtensions.forEach(ext => {
+              createExtensionItem(ext).then(item => {
+                item.style.display = 'block'; // Make the item visible
+                extensionList.appendChild(item);
+              });
             });
+          }
+
+          function filterExtensionsByLanguage(extensions, lang) {
+            if (lang === 'all') {
+              return extensions.filter(ext => ext.lang === 'all');
+            } else {
+              return extensions.filter(ext => ext.lang === lang);
+            }
           }
           document.getElementById('languageDropdown').addEventListener('click', () => {
             document.getElementById('languageOptions').classList.toggle('hidden');
           });
           document.querySelectorAll('.language-button').forEach(button => {
-            button.addEventListener('click', (e) => {
+            button.addEventListener('click', async (e) => {
               const lang = e.target.dataset.lang;
-              filterExtensionsByLanguage(lang);
+              const extensions = await fetchExtensions();
+              const filteredExtensions = filterExtensionsByLanguage(extensions, lang);
+              updateExtensionList(filteredExtensions);
             });
           });
           async function initializePage() {
             const extensions = await fetchExtensions();
-            await updateExtensionList(extensions);
-            filterExtensionsByLanguage('all'); // Show all extensions by default
+            console.log("All extensions fetched:", extensions);
+            const allExtensions = filterExtensionsByLanguage(extensions, 'all'); // Filter extensions with 'all' language support
+            console.log("Filtered extensions (lang 'all'):", allExtensions);
+            updateExtensionList(allExtensions); // Update the extension list with filtered extensions
           }
           initializePage();
         </script>
