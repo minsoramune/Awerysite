@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Anilist Client, OpenSource, Tachiyomi, Aniyomi, Anime app, Anilist Sync">
+    <meta property="og:title" content="Download Aniyomi Extensions!">
+    <meta property="og:description" content="All Tachiyomi Extensions">
+    <meta property="og:url" content="/manga-extensions">
+    <meta property="og:image" content="https://imgur.com/RwaqUkI.gif">
+    <meta name="theme-color" content="#4d006b" />
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.dantotsu.app/">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
+    <link href="./style.css" ref="stylesheet">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#4d006b">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/0a1007e48a.js" crossorigin="anonymous"></script>
+    <title>Extensions</title>
+    <style>
+      /* CSS Animation for shaking */
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+
+        25% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        50% {
+          transform: translateX(5px) rotate(1deg);
+        }
+
+        75% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .shake:hover {
+        animation: shake 0.5s infinite;
+      }
+    </style>
+    <style>
+      /* CSS Animation for shaking */
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+
+        25% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        50% {
+          transform: translateX(5px) rotate(1deg);
+        }
+
+        75% {
+          transform: translateX(-5px) rotate(-1deg);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .shake:hover {
+        animation: shake 0.5s infinite;
+      }
+    </style>
+    <style>
+      .extension-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .extension-item {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin: 1px;
+        width: 100px;
+        /* Adjusted width */
+        display: flex;
+        /* Use flexbox */
+        align-items: center;
+        /* Align items vertically */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .extension-logo {
+        width: 60px;
+        /* Smaller size */
+        height: 60px;
+        /* Smaller size */
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        /* Space between icon and text */
+      }
+
+      .extension-details {
+        display: flex;
+        flex-direction: column;
+        /* Stack items vertically */
+      }
+
+      .extension-name {
+        font-size: 13px;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .extension-version {
+        font-size: 9px;
+        color: #fff;
+        margin: 5px 0;
+      }
+
+      .download-link {
+        color: #fff;
+        text-decoration: none;
+        font-size: 9px;
+      }
+    </style>
+  </head>
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
+  <body class="bg-indigo-950">
+    <!-- NAVBAR -->
+    <nav class="bg-slate-950 bg-opacity-0 transition bg-transition text-white p-2 fixed w-full z-40">
+      <div class="container mx-auto flex justify-between">
+        <div class="flex items-center">
+          <a href="javascript:void(0);" onclick="incrementCounter()" class="text-2xl font-bold">
+            <img src="images/dantotsu_logo-f1s.png" alt="Dantotsu" class="h-10 transition-opacity hover:opacity-80" />
+          </a>
+          <script>
+            // Retrieve counter value from sessionStorage or default to 0
+            var cursedCounter = parseInt(sessionStorage.getItem("cursedCounter")) || 0;
+
+            function incrementCounter() {
+              cursedCounter++;
+              if (cursedCounter % 3 === 0) {
+                // Redirect to rickroll video
+                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                // Reset counter after redirect
+                sessionStorage.removeItem("cursedCounter");
+              } else {
+                // Store the updated counter value in sessionStorage
+                sessionStorage.setItem("cursedCounter", cursedCounter);
+                // Reload the page
+                window.location.reload(true);
+              }
+            }
+          </script>
+        </div>
+        <div class="flex items-center">
+          <div class="relative group">
+            <button id="languageDropdown" class="mr-4 transition-colors hover:text-purple-500">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+            <ul id="languageOptions" class="absolute hidden bg-white text-black p-2 space-y-1 rounded-lg shadow-md right-0 mt-3">
+              <button class="language-button" data-lang="all">All</button>
+              <br>
+              <button class="language-button" data-lang="ar">Arabic</button>
+              <button class="language-button" data-lang="de">German</button>
+              <button class="language-button" data-lang="en">English</button>
+              <button class="language-button" data-lang="es">Spanish</button>
+              <button class="language-button" data-lang="fr">French</button>
+              <button class="language-button" data-lang="hi">Hindi</button>
+              <button class="language-button" data-lang="id">Indonesian</button>
+              <button class="language-button" data-lang="it">Italian</button>
+              <button class="language-button" data-lang="ko">Korean</button>
+              <button class="language-button" data-lang="pl">Polish</button>
+              <button class="language-button" data-lang="pt-BR">Portuguese (Brazil)</button>
+              <button class="language-button" data-lang="ru">Russian</button>
+              <button class="language-button" data-lang="sr">Serbian</button>
+              <button class="language-button" data-lang="tr">Turkish</button>
+              <button class="language-button" data-lang="uk">Ukrainian</button>
+            </ul>
+          </div>
+          <a href="https://www.buymeacoffee.com/rebelonion" class="mr-4 transition-colors hover:text-purple-500">
+            <i class="fa-solid fa-mug-saucer"></i>
+          </a>
+          <a href="https://discord.com/invite/4HPZ5nAWwM" class="mr-4 transition-colors hover:text-purple-500">
+            <i class="fa-brands fa-discord"></i>
+          </a>
+          <a href="https://t.me/+gzBCQExtLQo1YTNh" class="mr-4 transition-colors hover:text-purple-500">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+          <a href="https://github.com/rebelonion/Dantotsu" class="mr-4 transition-colors hover:text-purple-500">
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- HERO -->
+    <section id="hero" class="text-white py-20 h-screen shadow-lg relative" style="background-image: url('images/ei_1698849603612-removebg-preview-1.png'); background-size: cover; background-position: center;">
+      <div class="container h-full mx-auto flex flex-col justify-center items-center relative z-10">
+        <div class="text-center">
+          <h1 class="text-5xl font-bold" data-lang="">Manga Extensions</h1> &nbsp;
+        </div>
+        <div class="extension-list" id="extensionList">
+          <!-- Template for extension item -->
+          <div class="extension-item template" data-name="" data-version="" data-lang="" style="display: none;">
+            <img class="extension-logo" src="">
+            <div class="extension-details">
+              <h2 class="extension-name"></h2>
+              <p class="extension-version"></p>
+              <a href="" class="download-link">⬇️ Download</a>
+            </div>
+          </div>
+        </div>
+        <script>
+          const repos = ["https://raw.githubusercontent.com/keiyoushi/extensions/repo/", "https://raw.githubusercontent.com/Kdroidwin/extensions-Japanese/repo/"];
+          async function checkUrl(url) {
+            try {
+              const response = await fetch(url, {
+                method: 'HEAD'
+              });
+              return response.ok;
+            } catch (error) {
+              return false;
+            }
+          }
+          async function findWorkingUrl(urls) {
+            for (const url of urls) {
+              if (await checkUrl(url)) {
+                return url;
+              }
+            }
+            return null;
+          }
+          async function fetchExtensions() {
+            let extensions = [];
+            for (const repo of repos) {
+              const url = `${repo}index.min.json`;
+              try {
+                const response = await fetch(url);
+                if (response.ok) {
+                  const data = await response.json();
+                  extensions = extensions.concat(data);
+                  break; // Exit loop if we successfully fetched the data
+                }
+              } catch (error) {
+                console.error(`Failed to fetch from ${url}:`, error);
+              }
+            }
+            return extensions;
+          }
+          async function createExtensionItem(ext) {
+            const templateItem = document.querySelector('.extension-item.template');
+            const item = templateItem.cloneNode(true);
+            item.classList.remove('template');
+            item.style.display = 'none'; // Initially hidden
+            item.dataset.name = ext.name;
+            item.dataset.version = ext.version;
+            item.dataset.lang = ext.lang;
+            item.dataset.nsfw = ext.nsfw;
+            const img = item.querySelector('.extension-logo');
+            const imgUrls = repos.map(repo => `${repo}icon/${ext.pkg}.png`);
+            const workingImgUrl = await findWorkingUrl(imgUrls);
+            img.src = workingImgUrl || 'default-image.png'; // Fallback image if none found
+            let displayName = ext.name.replace(/^Aniyomi:\s*/, '');
+            if (ext.nsfw === 1) {
+              displayName += ' 🔞';
+            }
+            if (displayName.includes(' ')) {
+              displayName = displayName.replace(/\s/g, '\n');
+            } else if (displayName.length > 9) {
+              displayName = displayName.substring(0, 9) + '..';
+            }
+            const name = item.querySelector('.extension-name');
+            name.textContent = displayName;
+            const version = item.querySelector('.extension-version');
+            version.textContent = `Version: ${ext.version}`;
+            const link = item.querySelector('.download-link');
+            const downloadUrls = repos.map(repo => `${repo}apk/${ext.apk}`);
+            const workingDownloadUrl = await findWorkingUrl(downloadUrls);
+            link.href = workingDownloadUrl || '#'; // Fallback if no URL found
+            return item;
+          }
+
+          function updateExtensionList(filteredExtensions) {
+            const extensionList = document.getElementById('extensionList');
+            // Clear previous items except the template
+            extensionList.querySelectorAll('.extension-item:not(.template)').forEach(item => item.remove());
+            filteredExtensions.forEach(ext => {
+              createExtensionItem(ext).then(item => {
+                item.style.display = 'block'; // Make the item visible
+                extensionList.appendChild(item);
+              });
+            });
+          }
+
+          function filterExtensionsByLanguage(extensions, lang) {
+            if (lang === 'all') {
+              return extensions.filter(ext => ext.lang === 'all');
+            } else {
+              return extensions.filter(ext => ext.lang === lang);
+            }
+          }
+          document.getElementById('languageDropdown').addEventListener('click', () => {
+            document.getElementById('languageOptions').classList.toggle('hidden');
+          });
+          document.querySelectorAll('.language-button').forEach(button => {
+            button.addEventListener('click', async (e) => {
+              const lang = e.target.dataset.lang;
+              const extensions = await fetchExtensions();
+              const filteredExtensions = filterExtensionsByLanguage(extensions, lang);
+              updateExtensionList(filteredExtensions);
+            });
+          });
+          async function initializePage() {
+            const extensions = await fetchExtensions();
+            console.log("All extensions fetched:", extensions);
+            const allExtensions = filterExtensionsByLanguage(extensions, 'all'); // Filter extensions with 'all' language support
+            console.log("Filtered extensions (lang 'all'):", allExtensions);
+            updateExtensionList(allExtensions); // Update the extension list with filtered extensions
+          }
+          initializePage();
+        </script>
+      </div>
+      </div>
+      <div id="opbg" class="absolute inset-0 bg-black bg-opacity-80 transition-colors"></div>
+    </section>
+    <div id="staffPopup" class="fixed inset-0 z-50 flex items-center justify-center hidden rounded-md">
+      <div class="bg-slate-800 p-4 md:mx-4 rounded-lg shadow-lg w-full md:w-auto max-h-[80vh] overflow-y-auto">
+        <div class="text-right">
+          <button id="closePopup" class="text-white hover:text-gray-500 text-xl p-4">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/87634197?v=4" alt="Rebel Union" class="w-20 h-20 rounded-full mb-2 shake" id="rebelOnionAvatarPopup" />
+            <p class="text-lg text-purple-600 font-bold mb-2" id="rebelOnionName"> Rebel Onion </p>
+            <p class="text-gray-500" id="rebelOnionDesc">Creator of Dantotsu</p>
+            <!-- social icons-->
+            <div class="flex items-center mt-4">
+              <a href="https://www.buymeacoffee.com/rebelonion" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a href="https://www.github.com/rebelonion" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://discordapp.com/users/714249925248024617" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              // Initial values
+              const originalName = "Rebel Onion";
+              const originalDesc = "Creator of Dantotsu";
+              const originalAvatarSrc = "https://avatars.githubusercontent.com/u/87634197?v=4";
+              let hoverCount = 0;
+              let shakeCount = 0;
+              // Function to start shaking the avatar
+              function shakeAvatar() {
+                document.getElementById("rebelOnionAvatarPopup").classList.add("shake");
+                setTimeout(function() {
+                  document.getElementById("rebelOnionAvatarPopup").classList.remove("shake");
+                }, 500); // Stop shaking after 0.5 seconds
+              }
+
+              function triggerEasterEgg() {
+                console.log("Easter egg triggered!"); // Check if this message appears in the console
+                document.getElementById("rebelOnionName").textContent = "Miku is Love❤️❤️❤️";
+                document.getElementById("rebelOnionDesc").textContent = "Worlds No 1 Hatsune Miku Fan";
+              }
+              // Reset counts and enable shaking when the popup is opened
+              function resetCountsAndShaking() {
+                hoverCount = 0;
+                shakeCount = 0;
+              }
+              // Event handler for mouseover event on the avatar
+              function handleHover() {
+                if (hoverCount < 3) {
+                  hoverCount++;
+                  shakeAvatar();
+                  if (hoverCount === 3) {
+                    triggerEasterEgg();
+                  }
+                }
+              }
+              // Event handler for click event on the avatar (for mobile devices)
+              function handleClick() {
+                if (shakeCount < 3) {
+                  shakeCount++;
+                  shakeAvatar();
+                  if (shakeCount === 3) {
+                    triggerEasterEgg();
+                  }
+                }
+              }
+              // Open the staff showcase popup
+              document.getElementById("openPopup").addEventListener("click", function() {
+                document.getElementById("staffPopup").classList.remove("hidden");
+                resetCountsAndShaking(); // Reset counts and enable shaking
+                // Enable shaking on the profile picture
+                document.getElementById("rebelOnionAvatarPopup").addEventListener("mouseover", handleHover);
+                // Enable shaking on mobile devices by clicking the profile picture
+                let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                if (isMobile) {
+                  document.getElementById("rebelOnionAvatarPopup").addEventListener("click", handleClick);
+                }
+              });
+              // Close the staff showcase popup
+              document.getElementById("closePopup").addEventListener("click", function() {
+                document.getElementById("staffPopup").classList.add("hidden");
+                // Reset elements to their original values
+                document.getElementById("rebelOnionName").textContent = originalName;
+                document.getElementById("rebelOnionDesc").textContent = originalDesc;
+                document.getElementById("rebelOnionAvatarPopup").src = originalAvatarSrc;
+                // Remove event listeners
+                document.getElementById("rebelOnionAvatarPopup").removeEventListener("mouseover", handleHover);
+                document.getElementById("rebelOnionAvatarPopup").removeEventListener("click", handleClick);
+              });
+            });
+          </script>
+          </script>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/149729762?v=4" alt="Wai What" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Wai What</p>
+            <p class="text-gray-500">Creator of Dantotsu's Branding</p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/WaiWhat" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://discordapp.com/users/928202695611908126" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/88599122?v=4" alt="Neko404" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Neko404</p>
+            <p class="text-gray-500">Main Web Dev</p>
+            <p class="text-gray-500"> If the world knew that I have the source code to the universe, they would give me all the cookies, hehe. </p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/MarshMeadow?tab=repositories" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://ko-fi.com/marshmeadow" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-solid fa-mug-saucer"></i>
+              </a>
+              <a href="https://t.me/+gzBCQExtLQo1YTNh" class="mr-4 transition-colors hover:text-purple-500">
+                <i class="fa-brands fa-telegram" width="60" height="60"></i>
+              </a>
+              <a href="https://discordapp.com/users/1028088462508839035" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/70383209?v=4" alt="arifalam" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Arif Alam</p>
+            <p class="text-gray-500"> Contributor of Dantotsu Website / Discord Moderator. </p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/ARIF683" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://discordapp.com/users/875096438936338493" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/94872614?v=4" alt="Ayodaza" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Ayodaza</p>
+            <p class="text-gray-500"> Main Web Dev / Website's Concept Designer </p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/dazadev" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://twitter.com/ayodaza" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a href="https://discordapp.com/users/755280247494148199" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/99584765?v=4" alt="aayush262" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Aayush262</p>
+            <p class="text-gray-500">Screenshot Provider</p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/aayush2622" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://discordapp.com/users/918825160654598224" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+          <div class="bg-slate-900 p-4 rounded-lg shadow-md">
+            <img src="https://avatars.githubusercontent.com/u/167056923?v=4" alt="aayush262" class="w-20 h-20 rounded-full mb-2" />
+            <p class="text-lg text-purple-600 font-bold mb-2">Itsmechinmoy</p>
+            <p class="text-gray-500">I'm a master of hiding Easter eggs! Think you've got what it takes to uncover it on the site? It's like a digital treasure hunt with a mischievous twist!</p>
+            <div class="flex items-center mt-4">
+              <a href="https://github.com/u/itsmechinmoy" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://discord.com/users/523539866311720963" class="mr-4 text-white hover:text-purple-500">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white py-4">
+      <div class="container mx-auto flex flex-col md:flex-row md:items-center md:justify-between">
+        <div class="md:w-full text-center md:text-left mb-2 md:mb-0">
+          <p class="text-sm">
+            <i class="fa-solid fa-code"></i> with <i class="fa-solid fa-heart"></i> by Dantotsu Contributors
+          </p>
+        </div>
+        <p>
+          <center>
+            <a href="https://pastebin.com/raw/M0nTU8Bg">DMCA</a> • <a href="https://www.buymeacoffee.com/rebelonion">Donate</a> • <a href="https://discord.com/invite/4HPZ5nAWwM">Discord</a> • <a href="https://t.me/+gzBCQExtLQo1YTNh">Telegram</a> • <a href="https://github.com/rebelonion/Dantotsu">Github</a>
+          </center>
+        </p>
+        <div class="md:w-full text-center md:text-right">
+          <button id="openPopup" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full">Credits</button>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script>
+    // navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('nav');
+      if (window.scrollY > 0) {
+        navbar.classList.add('bg-opacity-80');
+      } else {
+        navbar.classList.remove('bg-opacity-80');
+      }
+    });
+    window.addEventListener('scroll', function() {
+      const opbg = document.querySelector('#opbg');
+      if (window.scrollY > 600) {
+        opbg.classList.add('bg-opacity-100');
+      } else {
+        opbg.classList.remove('bg-opacity-100');
+      }
+    });
+    // reviews
+    const collapsibleButton = document.getElementById("collapsible");
+    const content = document.getElementById("content");
+    let isContentVisible = false;
+    collapsibleButton.addEventListener("click", function() {
+      isContentVisible = !isContentVisible;
+      content.style.display = isContentVisible ? "block" : "none";
+    });
+  </script>
+</html>
