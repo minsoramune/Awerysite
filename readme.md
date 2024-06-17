@@ -1,4 +1,5 @@
-[![CodeFactor](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/badge/main)](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/overview/main) [![Netlify Status](https://api.netlify.com/api/v1/badges/b80b9628-fc85-4131-9901-ef92298eb288/deploy-status)](https://app.netlify.com/sites/dantotsu/deploys) ![Vercel Deploy](https://deploy-badge.vercel.app/vercel/dantotsu)<hr>
+[![CodeFactor](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/badge/main)](https://www.codefactor.io/repository/github/itsmechinmoy/dantotustatic/overview/main) [![Netlify Status](https://api.netlify.com/api/v1/badges/b80b9628-fc85-4131-9901-ef92298eb288/deploy-status)](https://app.netlify.com/sites/dantotsu/deploys) ![Vercel Deploy](https://deploy-badge.vercel.app/vercel/dantotsu) ![GitHub Sponsors](https://img.shields.io/github/sponsors/itsmechinmoy)
+<hr>
 
 **Please Do Not Steal/Share Source Code**
 
