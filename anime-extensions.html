@@ -134,6 +134,70 @@
         font-size: 9px;
       }
     </style>
+    <style>
+      /* For screens from 1920px to 4K resolution */
+      @media only screen and (min-width: 1920px) {
+        .extension-list-container {
+          height: 500px;
+          /* Adjust the height for screens wider than 1920px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens from 1440px to 1920px */
+      @media only screen and (max-width: 1919px) and (min-width: 1440px) {
+        .extension-list-container {
+          height: 500px;
+          /* Adjust the height for screens between 1440px and 1920px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens from 1080px to 1440px */
+      @media only screen and (max-width: 1439px) and (min-width: 1080px) {
+        .extension-list-container {
+          height: 500px;
+          /* Adjust the height for screens between 1080px and 1440px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens from 720px to 1080px */
+      @media only screen and (max-width: 1079px) and (min-width: 720px) {
+        .extension-list-container {
+          height: 700px;
+          /* Adjust the height for screens between 720px and 1080px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens from 640px to 720px */
+      @media only screen and (max-width: 719px) and (min-width: 640px) {
+        .extension-list-container {
+          height: 700px;
+          /* Adjust the height for screens between 640px and 720px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens from 480px to 640px */
+      @media only screen and (max-width: 639px) and (min-width: 480px) {
+        .extension-list-container {
+          height: 700px;
+          /* Adjust the height for screens between 480px and 640px */
+          overflow-y: auto;
+        }
+      }
+
+      /* For screens below 480px */
+      @media only screen and (max-width: 479px) {
+        .extension-list-container {
+          height: 700px;
+          /* Adjust the height for screens below 480px */
+          overflow-y: auto;
+        }
+      }
+    </style>
   </head>
   <style>
     html,
@@ -216,14 +280,17 @@
         <div class="text-center">
           <h1 class="text-5xl font-bold" data-lang="">Anime Extensions</h1> &nbsp;
         </div>
-        <div class="extension-list" id="extensionList">
-          <!-- Template for extension item -->
-          <div class="extension-item template" data-name="" data-version="" data-lang="" style="display: none;">
-            <img class="extension-logo" src="">
-            <div class="extension-details">
-              <h2 class="extension-name"></h2>
-              <p class="extension-version"></p>
-              <a href="" class="download-link">⬇️ Download</a>
+        <!-- Wrap the extension list inside a div with specific height and overflow -->
+        <div class="extension-list-container">
+          <div class="extension-list" id="extensionList">
+            <!-- Template for extension item -->
+            <div class="extension-item template" data-name="" data-version="" data-lang="" style="display: none;">
+              <img class="extension-logo" src="">
+              <div class="extension-details">
+                <h2 class="extension-name"></h2>
+                <p class="extension-version"></p>
+                <a href="" class="download-link">⬇️ Download</a>
+              </div>
             </div>
           </div>
         </div>
