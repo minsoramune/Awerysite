@@ -1,6 +1,7 @@
-
 module.exports = {
-  content: ["./index.html","./install.html","./install.html","./apk.html","./discord.html","./telegram.html","./dmca.html","./404.html",
+  content: ["./index.html","./install.html","./latest.html","./alpha.html",
+    "./beta.html","./discord.html","./telegram.html","./404.html",
+    "./anime-extensions.html","./manga-extensions.html","./dmca.html",
     "./styles.css",],
   theme: {
     extend: {},
