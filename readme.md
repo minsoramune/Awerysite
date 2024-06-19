@@ -3,7 +3,7 @@
 
 **Please Do Not Steal/Share Source Code**
 
-This is a static page hosted on https://dantotsu.netlify.app/. 
+This is a static page hosted on https://myjeanne.netlify.app/. 
 
 For more information, please visit our GitHub repository at https://github.com/rebelonion/Dantotsu.
 
