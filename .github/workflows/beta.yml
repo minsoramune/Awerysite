@@ -1,9 +1,9 @@
 name: Build APK and Notify Discord
 
 on:
-  push:
+    workflow_dispatch:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**/README.md'
 
