@@ -128,7 +128,8 @@
 
       .extension-list-container {
         max-width: 100%;
-        overflow-x: hidden; /* Hide horizontal overflow */
+        overflow-x: hidden;
+        /* Hide horizontal overflow */
       }
 
       .download-link {
@@ -239,27 +240,43 @@
         </div>
         <div class="flex items-center">
           <div class="relative group">
-            <p class="text-1xl font-bold">Language
-            <button id="languageDropdown" class="mr-4 transition-colors hover:text-purple-500">
-              <i class="fa-solid fa-language"></i>
-            </button></p>
+            <p class="text-1xl font-bold">Language <button id="languageDropdown" class="mr-4 transition-colors hover:text-purple-500">
+                <i class="fa-solid fa-language"></i>
+              </button>
+            </p>
             <ul id="languageOptions" class="absolute hidden bg-white text-black p-2 space-y-1 rounded-lg shadow-md right-0 mt-3">
-              <button class="language-button" data-lang="all">All</button><br>
-              <button class="language-button" data-lang="ar">Arabic</button><br>
-              <button class="language-button" data-lang="de">German</button><br>
-              <button class="language-button" data-lang="en">English</button><br>
-              <button class="language-button" data-lang="es">Spanish</button><br>
-              <button class="language-button" data-lang="fr">French</button><br>
-              <button class="language-button" data-lang="hi">Hindi</button><br>
-              <button class="language-button" data-lang="id">Indonesian</button><br>
-              <button class="language-button" data-lang="it">Italian</button><br>
-              <button class="language-button" data-lang="ko">Korean</button><br>
-              <button class="language-button" data-lang="pl">Polish</button><br>
-              <button class="language-button" data-lang="pt-BR">Portuguese (Brazil)</button><br>
-              <button class="language-button" data-lang="ru">Russian</button><br>
-              <button class="language-button" data-lang="sr">Serbian</button><br>
-              <button class="language-button" data-lang="tr">Turkish</button><br>
-              <button class="language-button" data-lang="uk">Ukrainian</button><br>
+              <button class="language-button" data-lang="all">All</button>
+              <br>
+              <button class="language-button" data-lang="ar">Arabic</button>
+              <br>
+              <button class="language-button" data-lang="de">German</button>
+              <br>
+              <button class="language-button" data-lang="en">English</button>
+              <br>
+              <button class="language-button" data-lang="es">Spanish</button>
+              <br>
+              <button class="language-button" data-lang="fr">French</button>
+              <br>
+              <button class="language-button" data-lang="hi">Hindi</button>
+              <br>
+              <button class="language-button" data-lang="id">Indonesian</button>
+              <br>
+              <button class="language-button" data-lang="it">Italian</button>
+              <br>
+              <button class="language-button" data-lang="ko">Korean</button>
+              <br>
+              <button class="language-button" data-lang="pl">Polish</button>
+              <br>
+              <button class="language-button" data-lang="pt-BR">Portuguese (Brazil)</button>
+              <br>
+              <button class="language-button" data-lang="ru">Russian</button>
+              <br>
+              <button class="language-button" data-lang="sr">Serbian</button>
+              <br>
+              <button class="language-button" data-lang="tr">Turkish</button>
+              <br>
+              <button class="language-button" data-lang="uk">Ukrainian</button>
+              <br>
             </ul>
           </div>
         </div>
@@ -271,6 +288,8 @@
         <div class="text-center">
           <h1 class="text-5xl font-bold" data-lang="">Anime Extensions</h1> &nbsp;
         </div>
+        <a href="#" id="add-repo-btn" class="bg-purple-950 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full font-bold transition-colors">Add Repo</a>
+        <br>
         <!-- Wrap the extension list inside a div with specific height and overflow -->
         <div class="extension-list-container">
           <div class="extension-list" id="extensionList">
@@ -286,7 +305,7 @@
           </div>
         </div>
         <script>
-          const repos = ["https://raw.githubusercontent.com/almightyhak/aniyomi-anime-repo/main/", "https://raw.githubusercontent.com/Sadwhy/aniyomi-extensions/repo/", "https://raw.githubusercontent.com/usyboi/aniyomi-extensions/repo/", "https://raw.githubusercontent.com/punpunsx/aniyomi-extensions/repo/"];
+          const repos = ["https://raw.githubusercontent.com/almightyhak/aniyomi-anime-repo/main/", "https://raw.githubusercontent.com/ni3x/aniyomi-extensions/repo/", "https://raw.githubusercontent.com/usyboi/aniyomi-extensions/repo/", "https://raw.githubusercontent.com/punpunsx/aniyomi-extensions/repo/", "https://raw.githubusercontent.com/Sadwhy/aniyomi-extensions/repo/"];
           async function checkUrl(url) {
             try {
               const response = await fetch(url, {
@@ -402,6 +421,18 @@
             console.log("Filtered extensions (lang 'all'):", allExtensions);
             updateExtensionList(allExtensions); // Update the extension list with filtered extensions
           }
+          document.getElementById('add-repo-btn').addEventListener('click', async (event) => {
+            event.preventDefault();
+            const repo = await findWorkingUrl(repos.map(r => `${r}index.min.json`));
+            if (repo) {
+              const repoUrl = `aniyomi://add-repo?url=${repo} , ani.dantotsu://add-repo?url=${repo}`;
+              document.getElementById('add-repo-btn').setAttribute('href', repoUrl);
+              console.log('Repo URL set to:', repoUrl);
+              window.location.href = repoUrl; // Add this line to navigate to the URL
+            } else {
+              console.error('No valid repository URL found.');
+            }
+          });
           initializePage();
         </script>
       </div>
