@@ -574,13 +574,13 @@
                 let url;
                 switch (app) {
                   case 'universal':
-                    url = 'https://github.com/rebelonion/Dantotsu/releases/latest';
+                    url = 'https://github.com/MrBoomDeveloper/Awery/releases/latest';
                     break;
                   case 'beta':
                     fetchFullBetaChangelogs();
                     return;
                   case 'alpha':
-                    url = 'https://github.com/kaorlol/dantotsu-updater/releases';
+                    url = 'https://github.com/itsmechinmoy/awery-updater/releases';
                     break;
                   default:
                     return;
@@ -589,7 +589,7 @@
               }
               // Function to fetch full changelogs of beta
               async function fetchFullBetaChangelogs() {
-                const apiUrl = 'https://api.github.com/repos/rebelonion/Dantotsu/releases';
+                const apiUrl = 'https://api.github.com/repos/MrBoomDeveloper/Awery/releases';
                 try {
                   const response = await fetch(apiUrl);
                   if (!response.ok) throw new Error('Failed to fetch release information');
